@@ -1,0 +1,54 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  border: 1px;
+  border-radius: 5px;
+  padding: 50px;
+
+}
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .TextField {
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  p {
+    margin-top: 20px;
+  }
+  
+  a {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  a:hover {
+    color: darkblue;
+  }
+  
+.signup-container{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    border: 1px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.fixed-width-textfield {
+  width: 455px;
+}
+
+
+
