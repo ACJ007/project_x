@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { TextField, Button, Checkbox, Typography } from '@mui/material';
+import { TextField, Button, Checkbox, FormGroup } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const Create = () => {
   const [formData, setFormData] = useState({
@@ -41,6 +42,21 @@ const Create = () => {
     }
   };
 
+  const handleReset = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      age: '',
+      place: '',
+      address: '',
+      phoneNumber: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      termsChecked: false,
+    });
+  };
+
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -50,23 +66,23 @@ const Create = () => {
   }));
 
   return (
-    <div >
-      
+    <div>
       <br /><br /><br /><br /><br />
-      <Box sx={{ flexGrow: 1 ,
-          borderRadius: 2,
-                  height: "80vh",
-                  width: "65vh",
-                  backgroundColor: "rgb(255, 255, 255)",
-                  opacity: 11,
-                  border:"3px solid black",
-                  textAlign:'center',
-      margin:'auto',
+      <Box sx={{
+        flexGrow: 1,
+        borderRadius: 2,
+        height: "80vh",
+        width: "65vh",
+        backgroundColor: "rgb(255, 255, 255)",
+        opacity: 11,
+        border: "3px solid black",
+        textAlign: 'center',
+        margin: 'auto',
       }}>
-      <br /><br /><br />
+        <br /><br /><br />
         <h1>Sign Up</h1>
         <br />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onReset={handleReset}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -78,7 +94,6 @@ const Create = () => {
                 value={formData.firstName}
                 onChange={handleChange}
               />
-            
               <TextField
                 label="Last Name"
                 name="lastName"
@@ -99,11 +114,10 @@ const Create = () => {
                 value={formData.age}
                 onChange={handleChange}
               />
-      
               <TextField
                 label="Place"
                 name="place"
-                type="place"
+                type="text"
                 required
                 style={{ margin: 5 }}
                 value={formData.place}
@@ -114,7 +128,7 @@ const Create = () => {
               <TextField
                 label="Address"
                 name="address"
-                type="address"
+                type="text"
                 required
                 className="fixed-width-textfield"
                 value={formData.address}
@@ -123,7 +137,7 @@ const Create = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label="PhoneNumber"
+                label="Phone Number"
                 name="phoneNumber"
                 type="number"
                 required
@@ -154,7 +168,7 @@ const Create = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label="ConfirmPassword"
+                label="Confirm Password"
                 name="confirmPassword"
                 type="password"
                 required
@@ -165,24 +179,31 @@ const Create = () => {
             </Grid>
           </Grid>
           <br />
-          <Checkbox
-            name="termsChecked"
-            checked={formData.termsChecked}
-            onChange={handleChange}
-            required
-          >
-            Agree to the terms and conditions
-          </Checkbox>
+          <FormGroup sx={{alignContent:'center'}}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={formData.termsChecked}
+                  onChange={handleChange}
+                  name="termsChecked"
+                  required
+                />
+              }
+              label="Agree To The Terms & Conditions"
+            />
+          </FormGroup>
           <br />
           <Button variant="contained" type="submit" style={{ margin: 5 }}>
+    
             Sign Up
+          
           </Button>
           <Button variant="contained" type="reset">
             Reset
           </Button>
         </form>
         <p>
-          Already have an account?{' '}
+          Already have an account?
           <Link to={'/Log'} style={{ color: 'blue' }}>
             Sign In
           </Link>

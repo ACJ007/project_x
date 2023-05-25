@@ -1,3 +1,4 @@
+//not a homepage, it's a navbar 😁
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -158,7 +159,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color='secondary'>
+      <AppBar position="static" color='secondary' sx={{background: "#202020"}}>
         <Toolbar> 
           <Drawer />
           <Typography
@@ -167,7 +168,7 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            BOOK BUDDY
+            BOOKAHOLIC
           </Typography>
           <Search>
             <SearchIconWrapper>
