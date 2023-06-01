@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-const UsePro= () => {
+
+const UsePro = () => {
   const [user, setUser] = useState({
     name: 'John Doe',
     email: 'johndoe@example.com',
-    avatar: 'https://example.com/avatar.jpg'
+    avatar: 'https://rosieshouse.org/wp-content/uploads/2016/06/avatar-large-square.jpg'
   });
 
   const handleLogout = () => {
@@ -18,15 +19,17 @@ const UsePro= () => {
   };
 
   return (
-    <div>
+    <div className="profile-container">
       <h2>Profile Page</h2>
-      <div>
-        <img src={user.avatar} alt="Avatar" />
+      <div className="profile-card">
+        <img className="avatar" src={user.avatar} alt="Avatar" />
         <h3>{user.name}</h3>
         <p>{user.email}</p>
       </div>
-      <button onClick={handleProfileUpdate}>Edit Profile</button>
-      <button onClick={handleLogout}>Logout</button>
+      <div className="profile-buttons">
+        <button className="edit-button" onClick={handleProfileUpdate}>Edit Profile</button>
+        <button className="logout-button" onClick={handleLogout}>Logout</button>
+      </div>
     </div>
   );
 };
